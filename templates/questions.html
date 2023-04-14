@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Recommendations</title>
+</head>
+<body>
+    <h1>Welcome to Comic Recommendations</h1>
+    <form action="{{ url_for('questions') }}" method="POST">
+        <label for="main_character">Insert the name of the main Marvel character of a comic:</label>
+        <input type="text" id="main_character" name="main_character" required>
+        <br><br>
+        {% for question in questions %}
+            <label for="{{ question }}">{{ question }}</label>
+            <select name="{{ question }}" id="{{ question }}">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Get Recommendations">
+    </form>
+</body>
+</html>
